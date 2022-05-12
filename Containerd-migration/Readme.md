@@ -72,16 +72,16 @@ KUBELET_KUBEADM_ARGS="--network-plugin=cni --pod-infra-container-image=k8s.gcr.i
 
 **Start Kubelet**
 ```
-$systemctl start kubelet
+$ systemctl start kubelet
 ```
 
 **Check cluster status**
 ```
-$kubectl get nodes
+$ kubectl get nodes
 ```
 **Uncordon the node if everything looks good**
 ```
-$kubectl uncordon k8s-worker-3
+$ kubectl uncordon k8s-worker-3
 ```
 
 **Repeat the procedure for all nodes (one by one)**
@@ -89,15 +89,15 @@ $kubectl uncordon k8s-worker-3
 ###Post-migration
 **Congratulations on migrating your cluster to containerd. However, few things left to do to be fully migrated. Let's free up some space by removing docker-related folders. They will not be needed anymore**
 ```
-$rm -r /etc/docker
-$rm -r /var/lib/docker
-$rm -r /var/lib/dockershim
+$ rm -r /etc/docker
+$ rm -r /var/lib/docker
+$ rm -r /var/lib/dockershim
 ```
 
 **If you are using kubeadm to manage your cluster initialization, joins, and updates, you might want to re-annotate nodes, so kubeadm will not get confused on your next update whether you are using docker or containterd as a runtime**
 
 ```
-kubectl annotate node k8s-worker-3 --overwrite kubeadm.alpha.kubernetes.io/cri-socket=unix:///run/containerd/containerd.sock
+$ kubectl annotate node k8s-worker-3 --overwrite kubeadm.alpha.kubernetes.io/cri-socket=unix:///run/containerd/containerd.sock
 ```
 
 **Note that removals and annotate must be executed on all nodes after the whole cluster will be migrated to containerd and ensured that the migration was successful.**
