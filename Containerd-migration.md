@@ -5,7 +5,7 @@
 
 **In this post, we are going to migrate Kubernetes cluster from Docker to Containerd. These changes will apply to all nodes in the cluster. I recommend starting migrating from worker nodes.**
 
-##Prepare node
+## Prepare node
 **First of all, scheduling must be disabled and all unnecessary workloads, except daemon sets, must be evicted.
 
 - Start by cordoning the node
@@ -27,7 +27,7 @@ $ systemctl stop kubelet
 $ systemctl stop docker
 ```
 
-##Switch to containerd
+### Switch to containerd
 **Node is ready to be migrated to containerd. Start by removing docker as it will not be needed anymore**
 ```
 $ apt purge docker-ce docker-ce-cli
@@ -86,7 +86,7 @@ $ kubectl uncordon k8s-worker-3
 
 **Repeat the procedure for all nodes (one by one)**
 
-###Post-migration
+## Post-migration
 **Congratulations on migrating your cluster to containerd. However, few things left to do to be fully migrated. Let's free up some space by removing docker-related folders. They will not be needed anymore**
 ```
 $ rm -r /etc/docker
