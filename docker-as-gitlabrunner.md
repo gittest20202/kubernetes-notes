@@ -4,21 +4,22 @@
 - First of all, bring up a new instance where gitlab-runner will be running
 - Install gitlab-runner binary on the system
 ```
-$ curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh | sudo bash
-$ apt-get install gitlab-runner
+# curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh | sudo bash
+# apt-get install gitlab-runner
 ```
 
 - Install Docker on ubuntu system
 ```
-$ apt -y install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
-$ add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"apt update
-$ apt install docker-ce docker-ce-cli containerd.io
-$ systemctl docker status
+# apt -y install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+# add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"apt update
+# apt install docker-ce docker-ce-cli containerd.io
+# systemctl docker status
 ```
 - Run the below command to register
+-
 `--registration-token` can be anything. Need to copy it from `gitlab.example.com->project->setting->CI/CD pipeline->Runner->Dedicated Runner` 
 ```
-$ gitlab-runner register --non-interactive --url "http://gitlab.example.com/" --registration-token "dPM56-zd8QRHyA6zvD7a" --executor "docker" --docker-image alpine:latest --description "docker-runner" --tag-list "docker,aws" --run-untagged="true" --locked="false" –access-level="not_protected"
+# gitlab-runner register --non-interactive --url "http://gitlab.example.com/" --registration-token "dPM56-zd8QRHyA6zvD7a" --executor "docker" --docker-image alpine:latest --description "docker-runner" --tag-list "docker,aws" --run-untagged="true" --locked="false" –access-level="not_protected"
 ```
 
 - Update the `config.toml` file to udate the host file with `gitlab.example.com` to communicate
