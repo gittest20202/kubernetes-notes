@@ -358,7 +358,7 @@ spec:
 
 - Clone The Repository
 ```
-#git clone
+#git clone https://github.com/gittest20202/external-secrets.git
 
 # cd ExternalSecrets
 
