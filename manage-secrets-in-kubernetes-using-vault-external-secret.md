@@ -17,9 +17,9 @@ git clone
 cd vault
 ```
 -Install the RBAC for the Vault
- _**ClusterRoles**: Kubernetes ClusterRoles are entities that have been assigned certain special permissions.
- _**ServiceAccounts**: Kubernetes ServiceAccounts are identities assigned to entities such as pods to enable their interaction with the Kubernetes APIs using the role’s permissions.
- _**ClusterRoleBindings**: ClusterRoleBindings are entities that provide roles to accounts i.e. they grant permissions to service accounts.
+ **ClusterRoles**: Kubernetes ClusterRoles are entities that have been assigned certain special permissions.
+ **ServiceAccounts**: Kubernetes ServiceAccounts are identities assigned to entities such as pods to enable their interaction with the Kubernetes APIs using the role’s permissions.
+ **ClusterRoleBindings**: ClusterRoleBindings are entities that provide roles to accounts i.e. they grant permissions to service accounts.
 
 ```
 #kubectl create ns vault
@@ -73,11 +73,11 @@ data:
 
 #kubectl apply -f configmap.yaml
 ```
-_**disable_mlock**: Executing mlock syscall prevents memory from being swapped to
-_**disk**: This option disables the server from executing the mlock syscall. 
-_**ui**: Enables the built-in web UI.
-_**listener**: Configures how Vault is listening for API requests.
-_**storage**: Configures the storage backend where Vault data is stored. 
+-**disable_mlock**: Executing mlock syscall prevents memory from being swapped to
+-**disk**: This option disables the server from executing the mlock syscall. 
+-**ui**: Enables the built-in web UI.
+-**listener**: Configures how Vault is listening for API requests.
+-**storage**: Configures the storage backend where Vault data is stored. 
 
 - Deploy Vault Services
 
