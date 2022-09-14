@@ -10,7 +10,7 @@
 #Install Vault In Kubernetes
 - Clone the Vault Repository
 ```
-git clone 
+git clone https://github.com/gittest20202/vault.git 
 ```
 - Traverse To Vault Repo
 ```
