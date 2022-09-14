@@ -17,9 +17,9 @@ git clone
 cd vault
 ```
 - Install the RBAC for the Vault
--- ClusterRoles: Kubernetes ClusterRoles are entities that have been assigned certain special permissions.
--- ServiceAccounts: Kubernetes ServiceAccounts are identities assigned to entities such as pods to enable their interaction with the Kubernetes APIs using the role’s permissions.
--- ClusterRoleBindings: ClusterRoleBindings are entities that provide roles to accounts i.e. they grant permissions to service accounts.
+ - **ClusterRoles**: Kubernetes ClusterRoles are entities that have been assigned certain special permissions.
+ - **ServiceAccounts**: Kubernetes ServiceAccounts are identities assigned to entities such as pods to enable their interaction with the Kubernetes APIs using the role’s permissions.
+ - **ClusterRoleBindings**: ClusterRoleBindings are entities that provide roles to accounts i.e. they grant permissions to service accounts.
 ```
 #kubectl create ns vault
 
@@ -71,31 +71,27 @@ data:
 
 #kubectl apply -f configmap.yaml
 ```
-disable_mlock: Executing mlock syscall prevents memory from being swapped to
-disk: This option disables the server from executing the mlock syscall. 
-ui: Enables the built-in web UI.
-listener: Configures how Vault is listening for API requests.
-storage: Configures the storage backend where Vault data is stored. 
+- **disable_mlock**: Executing mlock syscall prevents memory from being swapped to
+- **disk**: This option disables the server from executing the mlock syscall. 
+- **ui**: Enables the built-in web UI.
+- **listener**: Configures how Vault is listening for API requests.
+- **storage**: Configures the storage backend where Vault data is stored. 
 
 - Deploy Vault Services
-```
-Services in Kubernetes are the objects that pods use to communicate with each other. ClusterIP type services are usually used for inter-pod communication.
 
-There are two types of ClusterIP services
+**Services in Kubernetes are the objects that pods use to communicate with each other. ClusterIP type services are usually used for inter-pod communication.**
 
-Headless Services
-Services
+> There are two types of ClusterIP services
+- Headless Services
+- Services
+
 Normal Kubernetes services act as load balancers and follow round-robin logic to distribute loads. Headless services don’t act like load balancers.
-
 Also, normal services are assigned IPs by Kubernetes whereas Headless services are not.
-
 For the vault server, we will create a headless service for internal usage. It will be very useful when we scale the vault to multiple replicas.
-
 A non-headless service will be created for UI as we want to load balance requests to the replicas when accessing the UI.
-
 Vault exposes its UI at port 8200. We will use a non-headless service of type NodePort as we want to access this endpoint from outside Kubernetes Cluster.
 
-
+```
 #cat services.yaml
 ---
 # Service for Vault Server
