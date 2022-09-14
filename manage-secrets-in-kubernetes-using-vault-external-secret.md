@@ -95,7 +95,7 @@ A non-headless service will be created for UI as we want to load balance request
 
 Vault exposes its UI at port 8200. We will use a non-headless service of type NodePort as we want to access this endpoint from outside Kubernetes Cluster.
 
-```
+
 #cat services.yaml
 ---
 # Service for Vault Server
