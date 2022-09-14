@@ -17,9 +17,9 @@ git clone
 cd vault
 ```
 - Install the RBAC for the Vault
-ClusterRoles: Kubernetes ClusterRoles are entities that have been assigned certain special permissions.
-ServiceAccounts: Kubernetes ServiceAccounts are identities assigned to entities such as pods to enable their interaction with the Kubernetes APIs using the role’s permissions.
-ClusterRoleBindings: ClusterRoleBindings are entities that provide roles to accounts i.e. they grant permissions to service accounts.
+-- ClusterRoles: Kubernetes ClusterRoles are entities that have been assigned certain special permissions.
+-- ServiceAccounts: Kubernetes ServiceAccounts are identities assigned to entities such as pods to enable their interaction with the Kubernetes APIs using the role’s permissions.
+-- ClusterRoleBindings: ClusterRoleBindings are entities that provide roles to accounts i.e. they grant permissions to service accounts.
 ```
 #kubectl create ns vault
 
