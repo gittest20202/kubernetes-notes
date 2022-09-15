@@ -72,13 +72,13 @@ spec:
 
 - **The match field**
   **The match field defines the scope of objects to which a given constraint will be applied. It supports the following matchers**
-  - **kinds** accepts a list of objects with apiGroups and kinds fields that list the groups/kinds of objects to which the constraint will apply. If multiple groups/kinds objects are specified, only one match is needed for the resource to be in scope.
-  - **scope** determines if cluster-scoped and/or namespaced-scoped resources are matched. Accepts *, Cluster, or Namespaced. (defaults to *)
-  - **namespaces** is a list of namespace names. If defined, a constraint only applies to resources in a listed namespace. Namespaces also supports a prefix-based glob. For example, namespaces: [kube-*] matches both kube-system and kube-public.
-  - **excludedNamespaces** is a list of namespace names. If defined, a constraint only applies to resources not in a listed namespace. ExcludedNamespaces also supports a prefix-based glob. For example, excludedNamespaces: [kube-*] matches both kube-system and kube-public.
-  - **labelSelector** is the combination of two optional fields: matchLabels and matchExpressions. These two fields provide different methods of selecting or excluding k8s objects based on the label keys and values included in object metadata. All selection expressions are ANDed to determine if an object meets the cumulative requirements of the selector.
-  - **namespaceSelector** is a label selector against an object's containing namespace or the object itself, if the object is a namespace.
-  - **name** is the name of an object. If defined, it matches against objects with the specified name. Name also supports a prefix-based glob. For example, name: pod-* matches both pod-a and pod-b.
+  - `kinds` accepts a list of objects with apiGroups and kinds fields that list the groups/kinds of objects to which the constraint will apply. If multiple groups/kinds objects are specified, only one match is needed for the resource to be in scope.
+  - `scope` determines if cluster-scoped and/or namespaced-scoped resources are matched. Accepts *, Cluster, or Namespaced. (defaults to *)
+  - `namespaces` is a list of namespace names. If defined, a constraint only applies to resources in a listed namespace. Namespaces also supports a prefix-based glob. For example, namespaces: `[kube-*]` matches both `kube-system` and `kube-public`.
+  - `excludedNamespaces` is a list of namespace names. If defined, a constraint only applies to resources not in a listed namespace. ExcludedNamespaces also supports a prefix-based glob. For example, excludedNamespaces: [kube-*] matches both kube-system and kube-public.
+  - `labelSelector` is the combination of two optional fields: matchLabels and matchExpressions. These two fields provide different methods of selecting or excluding k8s objects based on the label keys and values included in object metadata. All selection expressions are ANDed to determine if an object meets the cumulative requirements of the selector.
+  - `namespaceSelector` is a label selector against an object's containing namespace or the object itself, if the object is a namespace.
+  - `name` is the name of an object. If defined, it matches against objects with the specified name. Name also supports a prefix-based glob. For example, name: `pod-*` matches both `pod-a` and `pod-b`.
 
 - The parameters field
 **The parameters field describes the intent of a constraint. It can be referenced as input.parameters by the ConstraintTemplate's Rego source code. Gatekeeper populates input.parameters with values passed into the parameters field in the Constraint.**
@@ -127,15 +127,15 @@ The K8sRequiredLabels "ns-must-have-gk" is invalid: spec.parameters: Invalid val
 
 - The `input.review` object stores the admission request under evaluation. It has the following fields
 
-  - **dryRun**: Describes if the request was invoked by kubectl --dry-run. This cannot be populated by Kubernetes for audit.
-  - **kind**: The resource kind, group, version of the request object under evaluation.
-  - **name**: The name of the request object under evaluation. It may be empty if the deployment expects the API server to generate a name for the requested resource.
-  - **namespace**: The namespace of the request object under evaluation. Empty for cluster scoped objects.
-  - **object**: The request object under evaluation to be created or modified.
-  - **oldObject**: The original state of the request object under evaluation. This is only available for UPDATE operations.
-  - **operation**: The operation for the request (e.g. CREATE, UPDATE). This cannot be populated by Kubernetes for audit.
-  - **uid**: The request's unique identifier. This cannot be populated by Kubernetes for audit.
-  - **userInfo**: The request's user's information such as username, uid, groups, extra. This cannot be populated by Kubernetes for audit.
+  - `dryRun`: Describes if the request was invoked by `kubectl --dry-run`. This cannot be populated by Kubernetes for audit.
+  - `kind`: The resource kind, group, version of the request object under evaluation.
+  - `name`: The name of the request object under evaluation. It may be empty if the deployment expects the API server to generate a name for the `requested resource`.
+  - `namespace`: The namespace of the request object under evaluation. Empty for cluster scoped objects.
+  - `object`: The request object under evaluation to be created or modified.
+  - `oldObject`: The original state of the request object under evaluation. This is only available for `UPDATE` operations.
+  - `operation`: The operation for the request `(e.g. CREATE, UPDATE)`. This cannot be populated by Kubernetes for audit.
+  - `uid`: The request's unique identifier. This cannot be populated by Kubernetes for audit.
+  - `userInfo`: The request's user's information such as username, uid, groups, extra. This cannot be populated by Kubernetes for audit.
 
 - Validation
 ```
