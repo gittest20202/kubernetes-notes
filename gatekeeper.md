@@ -125,7 +125,7 @@ The K8sRequiredLabels "ns-must-have-gk" is invalid: spec.parameters: Invalid val
 #kubectl get constraints
 ```
 
-- The input.review object stores the admission request under evaluation. It has the following fields
+- The `input.review` object stores the admission request under evaluation. It has the following fields
 
   - **dryRun**: Describes if the request was invoked by kubectl --dry-run. This cannot be populated by Kubernetes for audit.
   - **kind**: The resource kind, group, version of the request object under evaluation.
