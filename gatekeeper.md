@@ -127,15 +127,15 @@ The K8sRequiredLabels "ns-must-have-gk" is invalid: spec.parameters: Invalid val
 
 - The input.review object stores the admission request under evaluation. It has the following fields
 
-**dryRun**: Describes if the request was invoked by kubectl --dry-run. This cannot be populated by Kubernetes for audit.
-**kind**: The resource kind, group, version of the request object under evaluation.
-**name**: The name of the request object under evaluation. It may be empty if the deployment expects the API server to generate a name for the requested resource.
-**namespace**: The namespace of the request object under evaluation. Empty for cluster scoped objects.
-**object**: The request object under evaluation to be created or modified.
-**oldObject**: The original state of the request object under evaluation. This is only available for UPDATE operations.
-**operation**: The operation for the request (e.g. CREATE, UPDATE). This cannot be populated by Kubernetes for audit.
-**uid**: The request's unique identifier. This cannot be populated by Kubernetes for audit.
-**userInfo**: The request's user's information such as username, uid, groups, extra. This cannot be populated by Kubernetes for audit.
+  - **dryRun**: Describes if the request was invoked by kubectl --dry-run. This cannot be populated by Kubernetes for audit.
+  - **kind**: The resource kind, group, version of the request object under evaluation.
+  - **name**: The name of the request object under evaluation. It may be empty if the deployment expects the API server to generate a name for the requested resource.
+  - **namespace**: The namespace of the request object under evaluation. Empty for cluster scoped objects.
+  - **object**: The request object under evaluation to be created or modified.
+  - **oldObject**: The original state of the request object under evaluation. This is only available for UPDATE operations.
+  - **operation**: The operation for the request (e.g. CREATE, UPDATE). This cannot be populated by Kubernetes for audit.
+  - **uid**: The request's unique identifier. This cannot be populated by Kubernetes for audit.
+  - **userInfo**: The request's user's information such as username, uid, groups, extra. This cannot be populated by Kubernetes for audit.
 
 - Validation
 ```
